@@ -1,7 +1,6 @@
 # FinTech Investor Behavior Analysis with Neo4j
 
-**Neo4j Solution Engineering — Technical Exercise**
-*Candidate: Vijay [Last Name] · June 2026*
+*Vijay Singh · June 2026*
 
 ## Scenario
 
@@ -47,7 +46,8 @@ the Customer node — the graph model normalizes by construction.
 
 ## 2. Loading the Data: Two Approaches, One Lesson
 
-The exercise asks for the loading technique to be explained. I evaluated both
+Choosing a loading technique is itself a design decision worth explaining. I
+evaluated both
 of Neo4j's primary loading paths against the same model — and the comparison
 surfaced a data-quality story worth telling.
 
