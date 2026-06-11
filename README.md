@@ -1,7 +1,7 @@
 # FinTech Investor Behavior Analysis with Neo4j
 
 **Neo4j Solution Engineering — Technical Exercise**
-*Candidate: Vijay [Last Name] · June 2026*
+*Candidate: Vijay Singh · June 2026*
 
 ## Scenario
 
