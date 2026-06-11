@@ -114,10 +114,25 @@ See [`cypher/01_load.cypher`](cypher/01_load.cypher). The script:
 
 **Result: 24/24 purchases, 24/24 correct dates.**
 
-<!-- TODO Part 2: insert script verification screenshots
-     - node/relationship counts showing PURCHASED = 24
-     - clean date values
-     - JPM spot-check showing both purchases alive -->
+The full script executed cleanly end to end:
+
+![Script run](images/part2/01_script_run_all_green.png)
+
+All 24 purchase relationships present — source row count and graph
+relationship count reconcile exactly:
+
+![24 purchases](images/part2/02_all_24_purchases_loaded.png)
+
+Every purchase date parsed correctly as a native `Date` — eight distinct
+values spanning 2017–2023, zero nulls, zero timezone artifacts (compare with
+the importer's result above):
+
+![Clean dates](images/part2/03_all_dates_correct.png)
+
+And the purchase the importer silently collapsed is back — both JPM purchases
+on account `123458`, distinguished by their surrogate keys:
+
+![Duplicate recovered](images/part2/04_duplicate_purchase_recovered.png)
 
 ### Recommendation to the customer
 
@@ -156,4 +171,5 @@ should never have to guess.
 | `cypher/01_load.cypher` | Production load script with constraints + verification |
 | `cypher/02_queries.cypher` | Task 2 analytical queries *(coming in Part 2)* |
 | `images/part1/` | Loading investigation evidence |
+| `images/part2/` | Script verification evidence |
 | `README.md` | This document |
