@@ -1,0 +1,9 @@
+customer_id,account_id,owner_name,address,city,region,postcode,account_type
+AJ90301,123456,Blaze Fielding,123 Main Street,London,Greater London,WC2N,gia
+AJ90301,123457,Blaze Fielding,123 Main Street,London,Greater London,WC2N,isa
+AJ90301,123458,Blaze Fielding,123 Main Street,London,Greater London,WC2N,sipp
+EC2123,923456,Axel Stone,276 Highland Avenue,Hatfield,Heartfordshire,AL10 0AX,gia
+EC2123,923457,Axel Stone,276 Highland Avenue,Hatfield,Heartfordshire,AL10 0AX,isa
+EC2123,923458,Axel Stone,276 Highland Avenue,Hatfield,Heartfordshire,AL10 0AX,sipp
+PRA983,7009001,Adam Hunter,3001 Dogwood Terrace,Birmingham,West Midlands,B1 1AY,gia
+NCC1701,7009991,Max Thunder,2 Home Stretch St.,Manchester,Greater Manchester,M1 3AJ,gia
