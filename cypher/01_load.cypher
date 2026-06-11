@@ -61,7 +61,7 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/vijaynsingh/neo4j-
 MATCH (a:Account {account_id: trim(row.account_id)})
 MATCH (s:Stock {ticker: trim(row.ticker)})
 MERGE (a)-[p:PURCHASED {purchase_id: linenumber() - 1}]->(s)
-SET p.shares = toInteger(row.number_of_shares),
+SET p.number_of_shares = toInteger(row.number_of_shares),
     p.price_per_share = toFloat(row.price_per_share),
     p.purchase_date = date({
         day:   toInteger(split(row.purchase_date,'/')[0]),
@@ -86,4 +86,4 @@ MATCH ()-[p:PURCHASED]->() RETURN count(p) AS purchased_relationships;
 
 // Spot-check the duplicate that started it all (account 123458, JPM)
 MATCH (a:Account {account_id:'123458'})-[p:PURCHASED]->(s:Stock {ticker:'JPM'})
-RETURN p.purchase_id, p.shares, p.purchase_date, p.price_per_share;
+RETURN p.purchase_id, p.number_of_shares, p.purchase_date, p.price_per_share;

@@ -20,8 +20,12 @@ queries, and a proposed production architecture.
 ```
 (Customer)-[:LIVES_IN]->(City)
 (Customer)-[:OWNS]->(Account {account_type})
-(Account)-[:PURCHASED {purchase_id, shares, purchase_date, price_per_share}]->(Stock)
+(Account)-[:PURCHASED {purchase_id, number_of_shares, purchase_date, price_per_share}]->(Stock)
 ```
+
+Full schema reference — all labels, properties, and types in one place:
+
+![Schema reference](images/graph_model_schema.png)
 
 ### Key modeling decisions
 
