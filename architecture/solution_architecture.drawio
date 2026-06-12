@@ -1,0 +1,219 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram id="primary" name="Primary — AuraDB on AWS">
+    <mxGraphModel dx="2133" dy="1007" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=center;" value="FinTech Investor Behavior Platform — Primary Architecture (Neo4j AuraDB Enterprise on AWS)" vertex="1">
+          <mxGeometry height="30" width="1000" x="200" y="46" as="geometry" />
+        </mxCell>
+        <mxCell id="users" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;" value="Users&#xa;Analysts · Advisors · Data Scientists" vertex="1">
+          <mxGeometry height="50" width="280" x="560" y="96" as="geometry" />
+        </mxCell>
+        <mxCell id="uitier" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12;" value="UI Tier" vertex="1">
+          <mxGeometry height="100" width="640" x="380" y="176" as="geometry" />
+        </mxCell>
+        <mxCell id="react" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="React App&#xa;(Neo4j JS driver via API)" vertex="1">
+          <mxGeometry height="55" width="180" x="610" y="198.5" as="geometry" />
+        </mxCell>
+        <mxCell id="neodash" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="NeoDash&#xa;analyst dashboards" vertex="1">
+          <mxGeometry height="55" width="180" x="410" y="198.5" as="geometry" />
+        </mxCell>
+        <mxCell id="bloom" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Neo4j Bloom&#xa;visual graph exploration" vertex="1">
+          <mxGeometry height="55" width="180" x="820" y="198.5" as="geometry" />
+        </mxCell>
+        <mxCell id="apigw" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Amazon API Gateway&#xa;AuthN (SSO / OIDC) · rate limiting" vertex="1">
+          <mxGeometry height="55" width="280" x="560" y="316" as="geometry" />
+        </mxCell>
+        <mxCell id="apptier" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12;" value="Application Tier — Amazon EKS (stateless · HPA autoscaling)" vertex="1">
+          <mxGeometry height="100" width="520" x="440" y="406" as="geometry" />
+        </mxCell>
+        <mxCell id="fastapi" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="FastAPI services&#xa;query API · investor-clustering endpoints" vertex="1">
+          <mxGeometry height="55" width="420" x="490" y="436" as="geometry" />
+        </mxCell>
+        <mxCell id="aura" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" value="Neo4j AuraDB Enterprise (AWS)&#xa;multi-AZ high availability · automated backups&#xa;capacity-sized (RAM) · GDS for clustering (Louvain / node similarity)" vertex="1">
+          <mxGeometry height="90" width="420" x="490" y="566" as="geometry" />
+        </mxCell>
+        <mxCell id="datatier" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12;" value="Data Platform Integration" vertex="1">
+          <mxGeometry height="320" width="300" x="60" y="456" as="geometry" />
+        </mxCell>
+        <mxCell id="snowflake" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Snowflake&#xa;Virtual Graph (zero-copy query)&#xa;+ batch sync" vertex="1">
+          <mxGeometry height="65" width="240" x="90" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="spark" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Apache Spark&#xa;Neo4j Spark Connector (batch ETL)" vertex="1">
+          <mxGeometry height="60" width="240" x="90" y="581" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Kafka&#xa;Neo4j Connector — streaming&#xa;purchase events" vertex="1">
+          <mxGeometry height="65" width="240" x="90" y="666" as="geometry" />
+        </mxCell>
+        <mxCell id="aitier" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;dashed=1;verticalAlign=top;fontStyle=1;fontSize=12;" value="AI Layer (extension)" vertex="1">
+          <mxGeometry height="220" width="300" x="1040" y="456" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="MCP server / GraphRAG&#xa;grounded retrieval over the&#xa;investor knowledge graph" vertex="1">
+          <mxGeometry height="70" width="240" x="1070" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="LLM agents / copilots&#xa;explainable, citation-backed answers" vertex="1">
+          <mxGeometry height="60" width="240" x="1070" y="586" as="geometry" />
+        </mxCell>
+        <mxCell id="mon" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Observability&#xa;Aura metrics → Prometheus / Grafana&#xa;query log analysis · alerting" vertex="1">
+          <mxGeometry height="70" width="300" x="1040" y="726" as="geometry" />
+        </mxCell>
+        <mxCell id="sec" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="Security (cross-cutting): SSO / SAML · role-based + schema-based access control · traversal restrictions (advisor sees only their clients&#39; subgraph) · private endpoints / VPC peering · encryption in transit and at rest" vertex="1">
+          <mxGeometry height="50" width="1280" x="60" y="826" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="users" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="uitier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="react" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="apigw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="apigw" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="fastapi">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="fastapi" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;" target="aura" value="Bolt · PrivateLink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="neodash" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;dashed=1;exitX=0.383;exitY=0.988;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.295;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="aura" value="direct Bolt (read)">
+          <mxGeometry relative="1" x="-0.3214" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="480" y="253" />
+              <mxPoint x="480" y="296" />
+              <mxPoint x="420" y="296" />
+              <mxPoint x="420" y="546" />
+              <mxPoint x="614" y="546" />
+            </Array>
+            <mxPoint x="580" y="286" as="sourcePoint" />
+            <mxPoint x="614" y="546" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="bloom" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;dashed=1;exitX=0.52;exitY=0.962;exitDx=0;exitDy=0;exitPerimeter=0;" value="direct Bolt (read)">
+          <mxGeometry relative="1" x="-0.2948" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="914" y="286" />
+              <mxPoint x="980" y="286" />
+              <mxPoint x="980" y="546" />
+              <mxPoint x="790" y="546" />
+              <mxPoint x="790" y="565" />
+            </Array>
+            <mxPoint x="939.8" y="146.05" as="sourcePoint" />
+            <mxPoint x="790" y="565" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;" value="zero-copy query">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="524" as="sourcePoint" />
+            <mxPoint x="660" y="566" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="spark" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;" target="aura" value="batch load">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="kafka" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;" target="aura" value="stream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;" value="Cypher / vector + traversal">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1070" y="526" as="sourcePoint" />
+            <mxPoint x="742" y="566" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="mcp" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=10;dashed=1;" value="metrics">
+          <mxGeometry relative="1" x="-0.3367" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="980" y="611" />
+              <mxPoint x="980" y="706" />
+              <mxPoint x="1184" y="706" />
+            </Array>
+            <mxPoint x="910" y="611" as="sourcePoint" />
+            <mxPoint x="1184" y="726" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="alternative" name="Alternative — Self-managed on EKS">
+    <mxGraphModel dx="1676" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=center;" value="Alternative Architecture — Self-managed Neo4j Enterprise Cluster on Amazon EKS" vertex="1">
+          <mxGeometry height="30" width="1000" x="200" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="when" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="When to choose this path: data sovereignty mandates · air-gapped or regulated constraints · existing Kubernetes platform team · fine-grained cost control at scale" vertex="1">
+          <mxGeometry height="45" width="1000" x="200" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="eks" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d79b00;dashed=1;verticalAlign=top;fontStyle=1;fontSize=13;" value="Amazon EKS Cluster" vertex="1">
+          <mxGeometry height="420" width="1080" x="160" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="appns" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;dashed=1;verticalAlign=top;fontSize=11;" value="Application namespace (stateless — autoscales freely)" vertex="1">
+          <mxGeometry height="180" width="420" x="190" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="api2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="FastAPI services (HPA)" vertex="1">
+          <mxGeometry height="50" width="170" x="410" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="ui2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="React UI / NeoDash" vertex="1">
+          <mxGeometry height="50" width="170" x="220" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="ingress" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Ingress / ALB · private networking" vertex="1">
+          <mxGeometry height="40" width="365" x="220" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="dbns" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d79b00;dashed=1;verticalAlign=top;fontSize=11;fontStyle=1;" value="Neo4j namespace — Helm charts / operator (stateful — scales DELIBERATELY, not elastically)" vertex="1">
+          <mxGeometry height="350" width="560" x="650" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="p1n" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" value="Primary 1&#xa;(writes · Raft)" vertex="1">
+          <mxGeometry height="55" width="150" x="680" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="p2n" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" value="Primary 2&#xa;(writes · Raft)" vertex="1">
+          <mxGeometry height="55" width="150" x="855" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="p3n" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" value="Primary 3&#xa;(writes · Raft)" vertex="1">
+          <mxGeometry height="55" width="150" x="1030" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="s1n" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Secondary&#xa;(read scaling)" vertex="1">
+          <mxGeometry height="55" width="150" x="767" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="s2n" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Secondary&#xa;(analytics / GDS)" vertex="1">
+          <mxGeometry height="55" width="150" x="942" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="pv" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="EBS persistent volumes · pod anti-affinity across AZs · scheduled backups to S3" vertex="1">
+          <mxGeometry height="45" width="500" x="680" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="raftnote" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" value="Fault tolerance: Raft consensus across 3 primaries — survives loss of one primary. Servers have ROLES; this is not a fleet of identical, interchangeable nodes." vertex="1">
+          <mxGeometry height="50" width="500" x="680" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="ops" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Operational ownership you take on: version upgrades · backup/restore discipline · topology management · monitoring (Prometheus exporter → Grafana) · security hardening. Without an experienced K8s platform team, recommend Neo4j Professional Services for initial deployment." vertex="1">
+          <mxGeometry height="60" width="1080" x="160" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="trade" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" value="Trade-off vs Aura: maximum control and sovereignty in exchange for operational burden. Same application tier, same data integration, same security model — only the graph tier&#39;s operating model changes." vertex="1">
+          <mxGeometry height="50" width="1080" x="160" y="747" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" edge="1" parent="1" source="api2" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p1n">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="288" />
+              <mxPoint x="630" y="288" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="a2" edge="1" parent="1" source="p1n" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" target="p2n">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" edge="1" parent="1" source="p2n" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" target="p3n">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" edge="1" parent="1" source="p2n" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" target="s1n">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" edge="1" parent="1" source="p3n" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;" target="s2n">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
