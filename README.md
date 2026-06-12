@@ -236,11 +236,68 @@ and portfolio for the full behavioral segmentation the customer described.
 
 ## 4. Proposed Solution Architecture
 
-<!-- TODO Task 3:
-     - primary architecture + one alternative
-     - cloud deployment, fault tolerance, UI, Spark/Snowflake integration,
-       monitoring, security
-     - diagrams -->
+Source diagram: [`architecture/solution_architecture.drawio`](architecture/solution_architecture.drawio)
+
+I frame every customer architecture as **two proofs of concept**: the *functional*
+POC — does the graph answer the investor-clustering question (proven in §2–§3) —
+and the *non-functional* POC — does the solution fit the customer's landscape:
+cloud, resilience, integration, security, operations. This section is the
+non-functional POC.
+
+### Primary architecture — Neo4j AuraDB Enterprise on AWS
+
+![Primary architecture](architecture/primary_architecture.png)
+
+| Requirement | Decision | Rationale |
+|---|---|---|
+| Cloud deployment | **AuraDB Enterprise on AWS** | Managed service; fault tolerance, backups, and upgrades are product properties, not projects. Capacity-sized (RAM) against data volume and concurrency. |
+| Fault tolerance | **Multi-AZ HA built into Aura** | Availability is delegated to the platform; RPO/RTO covered by automated backups. |
+| Dedicated UI | **React + Neo4j driver (via API tier)**, plus **NeoDash** for analyst dashboards and **Bloom** for visual exploration | Custom product UI where needed; NeoDash delivers analyst value in days, not months; Bloom lets business users *see* the clusters. |
+| Data platform integration | **Spark Connector** (batch ETL) · **Kafka Connector** (streaming purchase events) · **Snowflake via Virtual Graph** (zero-copy querying) | Three integration modes matched to three data temperatures. Virtual Graph lets the customer query Snowflake *as a graph* with no data movement — the lowest-friction adoption path. |
+| Monitoring | **Aura metrics exported to Prometheus/Grafana**, query log analysis, alerting | Same observability stack the customer already runs for the app tier. |
+| Security | **SSO/SAML · role-based + schema-based access control · traversal restrictions · private endpoints/VPC peering · encryption in transit & at rest** | Traversal restrictions deserve emphasis in FinTech: an advisor's role can be confined to their own clients' subgraph — they cannot traverse beyond it. Access control expressed in the same language as the data model. |
+
+**The scaling principle behind the design:** the application tier (FastAPI on
+EKS) is stateless and autoscales freely; the graph tier is stateful and scales
+*deliberately*. Architectures that treat a database like a stateless workload
+get burned — the tiers are different animals, and this design keeps them
+separated by an API boundary so each can be operated according to its nature.
+
+**AI layer (extension):** the investor graph doubles as a grounding layer for
+LLM tooling — GraphRAG retrieval and an MCP server give analyst copilots
+explainable, citation-backed answers traceable to graph paths. This pattern is
+implemented in a companion reference project
+([neo4j-insurance-graphrag](https://github.com/vijaynsingh/neo4j-insurance-graphrag)).
+
+### Alternative — self-managed Neo4j Enterprise cluster on Kubernetes (EKS)
+
+![Alternative architecture](architecture/alternative_architecture.png)
+
+Deployed via Neo4j Helm charts / operator: **three primary servers** forming a
+Raft consensus group (writes; survives loss of one primary) plus **secondary
+servers** for read scaling and analytics/GDS workloads. EBS persistent volumes,
+pod anti-affinity across availability zones, scheduled backups to S3.
+
+**When this path wins:** data sovereignty mandates, air-gapped or strictly
+regulated environments, an existing Kubernetes platform team, fine-grained cost
+control at large scale.
+
+**What it costs:** operational ownership — upgrades, backup discipline,
+topology management, monitoring, hardening. A critical operational note:
+**Neo4j cluster members have roles** (primaries vs secondaries) — this is not a
+fleet of identical, interchangeable nodes, and elastic-autoscaling assumptions
+that hold for stateless services do not apply. Organizations without K8s
+operational depth should engage professional services for the initial
+deployment rather than learning on a production database.
+
+### Decision summary
+
+Aura is the default because the customer's goal is investor insight, not
+database operations. The self-managed path exists for the constraints regulated
+customers genuinely have — and the choice between them is a **constraint
+conversation, not a preference**. Both share the same application tier, the
+same integrations, and the same security model; only the graph tier's operating
+model changes.
 
 ---
 
@@ -254,4 +311,5 @@ and portfolio for the full behavioral segmentation the customer described.
 | `images/part1/` | Loading investigation evidence |
 | `images/part2/` | Script verification evidence |
 | `images/part3/` | Query results |
+| `architecture/` | Solution architecture diagram (draw.io source + PNG exports) |
 | `README.md` | This document |
